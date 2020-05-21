@@ -1,15 +1,7 @@
-from datetime import datetime
-from flask import Flask, render_template, url_for, flash, redirect
-from form import RegistrationForm, LoginForm
-from flask_sqlalchemy import SQLAlchemy
+from flask import render_template, redirect, url_for, flash
 
-
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "28da71b6124d49e65d5d640e018b6cce"
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
-db = SQLAlchemy(app)
-
-from models import User, Post
+from flaskapp import app
+from flaskapp.form import RegistrationForm, LoginForm
 
 posts = [
     {"title": "First Post", "author": "Mihir Bindal", "date_posted": "9th May 2020", "content": "Welcome to my blog"},
@@ -46,6 +38,3 @@ def login():
             flash("Login failed", "danger")
     return render_template("login.html", title="Login", form=form)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
