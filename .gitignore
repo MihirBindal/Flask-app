@@ -1,0 +1,6 @@
+
+env/
+__pycache__/
+.idea/
+.idea/Flask-app.iml
+.idea/misc.xml
